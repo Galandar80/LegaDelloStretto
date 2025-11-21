@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lega dello Stretto</title>
+    <link rel="stylesheet" href="assets/css/one-piece-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        if (sessionStorage.getItem('adminAuthenticated') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+    <style>
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .admin-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .admin-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .admin-card h3 {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <span class="site-title">Admin Dashboard</span>
+            </div>
+            <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+        </div>
+    </header>
+
+    <section class="section-container">
+        <div class="container">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Pannello di Controllo</h1>
+            <div class="admin-grid">
+                <a href="backend-improved.html" class="admin-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Gestione Tornei (Nuovo)</h3>
+                    <p>Gestisci tornei, giocatori e classifiche con la nuova interfaccia.</p>
+                </a>
+                <a href="backend.html" class="admin-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Gestione Tornei (Legacy)</h3>
+                    <p>Accedi alla vecchia interfaccia di gestione.</p>
+                </a>
+                <a href="deckadmin.html" class="admin-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Gestione Deck</h3>
+                    <p>Amministra il database delle carte e dei mazzi.</p>
+                </a>
+                <a href="calculator.htm" class="admin-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Calcolatore</h3>
+                    <p>Strumento per calcoli rapidi durante i tornei.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            sessionStorage.removeItem('adminAuthenticated');
+            window.location.href = 'admin-login.html';
+        });
+    </script>
+</body>
+
+</html>
